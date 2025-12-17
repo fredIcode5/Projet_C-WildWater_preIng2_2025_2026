@@ -279,11 +279,16 @@ int main(int argc, char* argv[]) {
     double totalFuites = calculerTotalPertes(usine, usine->volume_entree);
     double rendement = ((usine->volume_entree - totalFuites) / usine->volume_entree) * 100;
 
-    // 4. Affichage
-    printf("Usine: %s | Volume Traité: %.2f m3 | Total Fuites: %.2f m3 (Rendement: %.2f%%)\n", 
-            idUsine, usine->volume_entree, totalFuites, rendement);
+    // 4. Conversion 
+    double volume_Mm3 = usine->volume_entree / 1000.0;
+    double fuites_Mm3 = totalFuites / 1000.0;
 
-    // 5. Nettoyage final
+
+    // 5. Affichage
+    printf("Usine: %s | Volume Traité: %.2f Mm3 | Total Fuites: %.2f Mm3 (Rendement: %.2f%%)\n", 
+            idUsine, volume_Mm3, fuites_Mm3, rendement);
+
+    // 6. Nettoyage final
     libererReseau(racine);
     libererAVL(racine);
 
