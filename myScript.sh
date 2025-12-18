@@ -45,7 +45,7 @@ fi
 
 # Compile le code C
 gcc leaks.c -o leaks_program
-gcc avl2.c -o avl2_program
+gcc histo.c -o histo_program
 
 
 
