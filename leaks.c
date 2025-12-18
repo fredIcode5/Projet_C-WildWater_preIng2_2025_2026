@@ -1,30 +1,5 @@
 #define _GNU_SOURCE
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/*----------STRUCTURE----------*/
-
-typedef struct Noeud {
-    char* id;                // Identifiant unique de l'acteur (ex: "Storage #13178")
-    double volume_entree;       // Volume d'eau arrivant dans ce nœud
-    struct Enfant* liste_fils;  // Liste chaînée des nœuds en aval (enfants)
-    int nb_fils;                // Nombre d'enfants pour diviser le volume équitablement 
-} Noeud;
-
-typedef struct Enfant {
-    struct Noeud* ptr_noeud;    // Pointeur vers le nœud enfant
-    double ratio_fuite;         // % de fuite sur ce tronçon spécifique [cite: 64, 75]
-    struct Enfant* suivant;     // Prochain enfant dans la liste
-} Enfant;
-
-typedef struct AVL {
-    char* id;               // Clé de recherche (l'identifiant)
-    Noeud* adresse_noeud;       // Pointeur vers le nœud correspondant dans l'arbre principal
-    struct AVL *gauche;    // Fils gauche
-    struct AVL *droit;    // Fils droit
-    int eq;                // Pour l'équilibrage de l'AVL [cite: 204, 209]
-} AVL;
+#include "leaks.h"
 
 /*----------GESTION----------*/
 
@@ -34,7 +9,7 @@ int max(int a, int b) { return (a > b) ? a : b; }
 int min3(int a, int b, int c) { return min(a, min(b, c)); }
 int max3(int a, int b, int c) { return max(a, max(b, c)); }
 
-AVL* creerAVL(char* id, struct Noeud* n) {
+AVL* creerAVL(char* id, Noeud* n) {
     AVL* nouveau = (AVL*)malloc(sizeof(AVL));
     if (nouveau == NULL){
         exit(EXIT_FAILURE);
@@ -220,14 +195,14 @@ double calculerTotalPertes(Noeud* actuel, double volume_entrant) {
 
 /*----------MEMOIRE----------*/
 
-void libererReseau(AVL* racineAVL) {
-    if (racineAVL == NULL) return;
+void libererReseau(AVL* a) {
+    if (a == NULL) return;
     
     // On parcourt l'AVL pour atteindre chaque Noeud unique
-    libererReseau(racineAVL->gauche);
-    libererReseau(racineAVL->droit);
+    libererReseau(a->gauche);
+    libererReseau(a->droit);
     
-    Noeud* n = racineAVL->adresse_noeud;
+    Noeud* n = a->adresse_noeud;
     // Libérer la liste des enfants
     Enfant* actuel = n->liste_fils;
     while (actuel != NULL) {
