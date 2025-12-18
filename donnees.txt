@@ -1,5 +1,0 @@
-Categorie1  10
-Categorie2  25
-Categorie3  12
-Categorie4  30
-Categorie5  18

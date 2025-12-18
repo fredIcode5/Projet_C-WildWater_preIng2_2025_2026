@@ -63,7 +63,7 @@ case "$COMMAND" in
         fi
         echo "DEBUG : SUBCOMMAND='$SUBCOMMAND'"
         if [[ "$SUBCOMMAND" = "max" ]]; then
-            grep -E '^-;[^-;]+;-;[^-;]+;-$' "$DATA_FILE" | cut -d';' -f2,4 | ./avl2 "$SUBCOMMAND"
+            grep -E '^-;[^-;]+;-;[^-;]+;-$' "$DATA_FILE" | cut -d';' -f2,4 | ./histo_program "$SUBCOMMAND"
             echo "Les usines ont été enregistrées dans lst_usine.txt"
             cat lst_usine.txt
             head -n 10 lst_usine.txt > extrait10.txt
@@ -85,7 +85,7 @@ case "$COMMAND" in
         fi
 
          if [[ "$SUBCOMMAND" = "src" ]]; then
-            grep -E '^-;[^-;]+;[^-;]+;[^-;]+;[^-;]+$' "$DATA_FILE" | cut -d';' -f3,4 | ./avl2 "$SUBCOMMAND"
+            grep -E '^-;[^-;]+;[^-;]+;[^-;]+;[^-;]+$' "$DATA_FILE" | cut -d';' -f3,4 | ./histo_program "$SUBCOMMAND"
             echo "Les usines ont été enregistrées dans lst_usine.txt"
             cat lst_usine.txt
             head -n 10 lst_usine.txt > extrait10.txt
@@ -105,7 +105,7 @@ case "$COMMAND" in
         fi
         
         if [[ "$SUBCOMMAND" = "real" ]]; then
-            grep -E '^-;[^-;]+;[^-;]+;[^-;]+;[^-;]+$' "$DATA_FILE" | cut -d';' -f3,4,5 | ./avl2 "$SUBCOMMAND" 
+            grep -E '^-;[^-;]+;[^-;]+;[^-;]+;[^-;]+$' "$DATA_FILE" | cut -d';' -f3,4,5 | ./histo_program "$SUBCOMMAND" 
             echo "Les usines ont été enregistrées dans lst_usine.txt"
 
             cat lst_usine.txt
