@@ -65,9 +65,10 @@ case "$COMMAND" in
         if [[ "$SUBCOMMAND" = "max" ]]; then
             grep -E '^-;[^-;]+;-;[^-;]+;-$' "$DATA_FILE" | cut -d';' -f2,4 | ./histo_program "$SUBCOMMAND"
             echo "Les usines ont été enregistrées dans lst_usine.txt"
+            sort -t';' -k2,2n lst_usine.txt
             cat lst_usine.txt
-            head -n 10 lst_usine.txt > extrait10.txt
-            tail -n 50 lst_usine.txt > extrait50.txt 
+            head -n 50 lst_usine.txt > extrait50.txt
+            tail -n 10 lst_usine.txt > extrait10.txt 
 
             awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait10.txt > donnee_histo.txt
             awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait50.txt > donnee_histo2.txt
@@ -87,9 +88,12 @@ case "$COMMAND" in
          if [[ "$SUBCOMMAND" = "src" ]]; then
             grep -E '^-;[^-;]+;[^-;]+;[^-;]+;[^-;]+$' "$DATA_FILE" | cut -d';' -f3,4 | ./histo_program "$SUBCOMMAND"
             echo "Les usines ont été enregistrées dans lst_usine.txt"
+            sort -t';' -k2,2n lst_usine.txt
             cat lst_usine.txt
-            head -n 10 lst_usine.txt > extrait10.txt
-            tail -n 50 lst_usine.txt > extrait50.txt 
+            
+
+            head -n 10 lst_usine.txt | sort -t';' -k2,2n > extrait10.txt
+            tail -n 50 lst_usine.txt | sort -t';' -k2,2n > extrait50.txt
 
             awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait10.txt > donnee_histo.txt
             awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait50.txt > donnee_histo2.txt
@@ -107,11 +111,11 @@ case "$COMMAND" in
         if [[ "$SUBCOMMAND" = "real" ]]; then
             grep -E '^-;[^-;]+;[^-;]+;[^-;]+;[^-;]+$' "$DATA_FILE" | cut -d';' -f3,4,5 | ./histo_program "$SUBCOMMAND" 
             echo "Les usines ont été enregistrées dans lst_usine.txt"
-
-            cat lst_usine.txt
+            sort -t';' -k2,2n lst_usine.txt
             
-            head -n 10 lst_usine.txt > extrait10.txt
-            tail -n 50 lst_usine.txt > extrait50.txt 
+            
+            head -n 50 lst_usine.txt | sort -t';' -k2,2n > extrait50.txt
+            tail -n 10 lst_usine.txt | sort -t';' -k2,2n > extrait10.txt
 
             awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait10.txt > donnee_histo.txt
             awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait50.txt > donnee_histo2.txt
@@ -160,5 +164,6 @@ echo "Durée totale du script : ${DURATION} ms"
 
 # Nettoyage du fichier temporaire
 rm -f "$TEMP_FILE"
+
 
 exit 0
