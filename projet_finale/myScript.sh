@@ -137,8 +137,8 @@ case "$COMMAND" in
 
             ./creation_histo.sh donnee_histo.txt donnee_histo2.txt "$SUBCOMMAND"
 
-           graph="vol_traitement10"
-           graph2="vol_traitement50"
+           graph="vol_real10"
+           graph2="vol_real50"
 
            xdg-open "graphe/${graph}.png"
            xdg-open "graphe/${graph2}.png"
