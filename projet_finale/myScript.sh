@@ -58,7 +58,7 @@ if [ ! -f "$EXEC1" ] || [ ! -f "$EXEC2" ]; then
 fi
 
 
-#Création dossier "graphe" et "data"
+#Création dossier "graphe"
 mkdir -p graphe
 mkdir -p data
 
@@ -158,12 +158,14 @@ case "$COMMAND" in
 
     if [ ! -s "$TEMP_FILE" ]; then
         echo "Erreur : Aucune donnée trouvée pour l'usine '$SUBCOMMAND'."
+        echo "Usine: ${SUBCOMMAND} | Volume Traité: -1 | Total Fuites: -1" >> data/historique_rendements.dat
         rm -f "$TEMP_FILE"
+        make clean
         exit 4
     fi
 
     echo "Lancement du calcul..."
-    ./leaks_program "$TEMP_FILE" "$SUBCOMMAND" | tee -a historique_rendements.dat
+    ./leaks_program "$TEMP_FILE" "$SUBCOMMAND" | tee -a data/historique_rendements.dat
     ;;
     
 *)
