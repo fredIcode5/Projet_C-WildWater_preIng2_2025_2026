@@ -31,9 +31,9 @@ elif [[ "$option" == "src" ]]; then
     colour="green"
 elif [[ "$option" == "real" ]]; then
     title="par perte réelle."
-    name="vol_traitement"
-    graph="vol_traitement10"
-    graph2="vol_traitement50"
+    name="vol_real"
+    graph="vol_real10"
+    graph2="vol_real50"
     colour="red"
 fi
 
