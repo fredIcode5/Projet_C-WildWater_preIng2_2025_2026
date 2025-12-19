@@ -58,7 +58,9 @@ if [ ! -f "$EXEC1" ] || [ ! -f "$EXEC2" ]; then
 fi
 
 
-
+#Création dossier "graphe" et "data"
+mkdir -p graphe
+mkdir -p data
 
 # Traitement des commandes
 
@@ -78,11 +80,11 @@ case "$COMMAND" in
             echo "Les usines ont été enregistrées dans lst_usine.txt"
             sort -t';' -k2,2n lst_usine.txt
             cat lst_usine.txt
-            head -n 50 lst_usine.txt > extrait50.txt
-            tail -n 10 lst_usine.txt > extrait10.txt 
+            head -n 50 lst_usine.txt > data/extrait50.txt
+            tail -n 10 lst_usine.txt > data/extrait10.txt 
 
-            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait10.txt > donnee_histo.txt
-            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait50.txt > donnee_histo2.txt
+            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' data/extrait10.txt > donnee_histo.txt
+            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' data/extrait50.txt > donnee_histo2.txt
 
             cat donnee_histo.txt
 
@@ -91,8 +93,8 @@ case "$COMMAND" in
             graph="vol_max10"
             graph2="vol_max50"
             
-            explorer.exe "graphe/${graph}.png"
-            explorer.exe "graphe/${graph2}.png"
+            xdg-open "graphe/${graph}.png"
+            xdg-open "graphe/${graph2}.png"
             
         fi
 
@@ -103,11 +105,11 @@ case "$COMMAND" in
             cat lst_usine.txt
             
 
-            head -n 10 lst_usine.txt | sort -t';' -k2,2n > extrait10.txt
-            tail -n 50 lst_usine.txt | sort -t';' -k2,2n > extrait50.txt
+            head -n 10 lst_usine.txt | sort -t';' -k2,2n > data/extrait10.txt
+            tail -n 50 lst_usine.txt | sort -t';' -k2,2n > data/extrait50.txt
 
-            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait10.txt > donnee_histo.txt
-            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait50.txt > donnee_histo2.txt
+            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' data/extrait10.txt > donnee_histo.txt
+            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' data/extrait50.txt > donnee_histo2.txt
 
 
             ./creation_histo.sh donnee_histo.txt donnee_histo2.txt "$SUBCOMMAND"
@@ -115,8 +117,8 @@ case "$COMMAND" in
             graph="vol_capte10"
             graph2="vol_capte50"
 
-            explorer.exe "graphe/${graph}.png"
-            explorer.exe "graphe/${graph2}.png"  
+            xdg-open "graphe/${graph}.png"
+            xdg-open "graphe/${graph2}.png"
         fi
         
         if [[ "$SUBCOMMAND" = "real" ]]; then
@@ -125,11 +127,11 @@ case "$COMMAND" in
             sort -t';' -k2,2n lst_usine.txt
             
             
-            head -n 50 lst_usine.txt | sort -t';' -k2,2n > extrait50.txt
-            tail -n 10 lst_usine.txt | sort -t';' -k2,2n > extrait10.txt
+            head -n 50 lst_usine.txt | sort -t';' -k2,2n > data/extrait50.txt
+            tail -n 10 lst_usine.txt | sort -t';' -k2,2n > data/extrait10.txt
 
-            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait10.txt > donnee_histo.txt
-            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' extrait50.txt > donnee_histo2.txt
+            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' data/extrait10.txt > donnee_histo.txt
+            awk -F';' '{ gsub(/[^0-9]/,"",$2); if ($2!="") print $1 ";" $2 }' data/extrait50.txt > donnee_histo2.txt
 
             
 
@@ -138,8 +140,8 @@ case "$COMMAND" in
            graph="vol_traitement10"
            graph2="vol_traitement50"
 
-           explorer.exe "graphe/${graph}.png"
-	   explorer.exe "graphe/${graph2}.png" 
+           xdg-open "graphe/${graph}.png"
+           xdg-open "graphe/${graph2}.png"
         fi
 
         ;;
