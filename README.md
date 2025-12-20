@@ -25,6 +25,7 @@ projet_finale/
 
 
 I. Installation et Préparation
+
 Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour garantir la bonne exécution des scripts.
 
 
