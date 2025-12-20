@@ -7,17 +7,18 @@ if ! command -v gnuplot &> /dev/null; then
 fi
 
 
-#10 plus petits/10 plus grands 
+# Arguments
 
 DATA_FILE="$1"
 DATA_FILE2="$2"
 option="$3"
 
+# Affichage données 
 cat "$DATA_FILE"
 cat "$DATA_FILE2"
 
 
-#arguments option 
+# Arguments option 
 
 if [[ "$option" == "max" ]]; then
     title="par capacité max."
@@ -42,7 +43,7 @@ OUTPUT2="graphe/${graph2}.png"
 
 
 
-# Génération de l'histogramme avec Gnuplot ( les 50 plus petites)
+# Génération de l'histogramme avec Gnuplot ( les 10 plus grandes)
 gnuplot <<- EOF
     set terminal pngcairo size 1200,700 enhanced font 'Verdana,12'
     set output "$OUTPUT1"
@@ -64,7 +65,7 @@ gnuplot <<- EOF
     
 EOF
 
-# Génération de l'histogramme avec Gnuplot ( les 10 plus grands)
+# Génération de l'histogramme avec Gnuplot ( les 50 plus petites)
 gnuplot <<- EOF
     set terminal pngcairo size 1200,700 enhanced font 'Verdana,12'
     set output "$OUTPUT2"
@@ -85,7 +86,6 @@ gnuplot <<- EOF
 
     
 EOF
-
 
 
 echo "Histogramme généré : $OUTPUT1"
