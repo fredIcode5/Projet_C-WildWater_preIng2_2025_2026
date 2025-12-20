@@ -71,7 +71,9 @@ Modes disponibles :
 
 Résultats :
 Les graphiques sont générés automatiquement dans le dossier graphe/.
+
 Deux images sont créées par exécution : une pour les 10 plus grandes usines et une pour les 50 plus petites.
+
 Les graphiques s'affichent automatiquement à la fin du traitement.
 
 2. Détection de Fuites (leaks)
@@ -79,11 +81,15 @@ Les graphiques s'affichent automatiquement à la fin du traitement.
 Cette commande calcule le rendement d'une usine spécifique en mesurant les pertes jusqu'aux usagers (en parcourant l'ensemble de son réseau de distribution aval).
 
 Syntaxe : ./myScript.sh [FICHIER] leaks "Nom_De_L_Usine" 
+
 (Note : Le nom de l'usine doit être entre guillemets s'il contient des espaces).
 
 Résultats :
+
 Affiche le volume traité, le volume perdu et le rendement directement dans la console.
+
 L'historique des résultats est sauvegardé dans le fichier data/historique_rendements.dat.
+
 Si l'usine est introuvable, le programme enregistre une ligne avec la valeur -1.
 
 
@@ -93,7 +99,9 @@ III. Exemples d'exécution
 Voici des exemples concrets pour tester le programme (assurez-vous d'utiliser les noms de fichiers présents dans le dossier, ex: c-wildwater_v0.dat) :
 
 Générer l'histogramme des capacités max :
+
 ./myScript.sh c-wildwater_v0.dat histo max
 
 Calculer les fuites pour l'usine "Facility complex #RH400057F" :
+
 ./myScript.sh c-wildwater_v0.dat leaks "Facility complex #RH400057F"
