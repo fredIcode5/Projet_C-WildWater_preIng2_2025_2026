@@ -6,13 +6,21 @@ Structure du Projet
 L'arborescence du dossier projet_finale doit être organisée comme suit:
 
 projet_finale/
+
 ├── include/
+
 │   ├── histogram.h
+
 │   └── leaks.h
+
 ├── source/
+
 │   ├── histogram.c
+
 │   └── leaks.c
+
 ├── Makefile
+
 ├── myScript.sh
 
 I. Installation et Préparation
@@ -28,6 +36,7 @@ Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour g
    cd chemin/vers/projet_finale
 3.Lancez les commandes suivantes:
   sed -i 's/\r$//' myScript.sh
+  
   chmod +x creation_histo.sh myScript.sh
 
 
