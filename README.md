@@ -31,11 +31,15 @@ Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour g
 
 
 1.Mise en place des données : Téléchargez et placez les fichiers de données suivants directement dans le dossier projet_finale :
+  
   -c-wildwater_v0.dat
+  
   -c-wildwater_v3.dat 
 
 2.Préparation de l'environnement : Ouvrez un terminal et placez-vous dans le dossier du projet :
+   
    cd chemin/vers/projet_finale
+
 3.Lancez les commandes suivantes:
   sed -i 's/\r$//' myScript.sh
   
@@ -60,7 +64,9 @@ Syntaxe : ./myScript.sh [FICHIER] histo [mode]
 Modes disponibles :
 
   max : Classement par capacité maximale de traitement.
+
   src : Classement par volume total capté aux sources.
+  
   real : Classement par volume réellement traité (après pertes captage).
 
 Résultats :
@@ -69,6 +75,7 @@ Deux images sont créées par exécution : une pour les 10 plus grandes usines e
 Les graphiques s'affichent automatiquement à la fin du traitement.
 
 2. Détection de Fuites (leaks)
+
 Cette commande calcule le rendement d'une usine spécifique en mesurant les pertes jusqu'aux usagers (en parcourant l'ensemble de son réseau de distribution aval).
 
 Syntaxe : ./myScript.sh [FICHIER] leaks "Nom_De_L_Usine" 
