@@ -23,6 +23,7 @@ projet_finale/
 
 ├── myScript.sh
 
+
 I. Installation et Préparation
 Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour garantir la bonne exécution des scripts.
 
@@ -38,6 +39,7 @@ Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour g
   sed -i 's/\r$//' myScript.sh
   
   chmod +x creation_histo.sh myScript.sh
+
 
 
 II. Utilisation
@@ -74,6 +76,7 @@ Résultats :
 Affiche le volume traité, le volume perdu et le rendement directement dans la console.
 L'historique des résultats est sauvegardé dans le fichier data/historique_rendements.dat.
 Si l'usine est introuvable, le programme enregistre une ligne avec la valeur -1.
+
 
 
 III. Exemples d'exécution
