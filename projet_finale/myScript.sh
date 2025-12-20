@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# Gestion du temps (millisecondes approx.)
+# Début du temps 
 
 start_time=$(date +%s.%N)
 
@@ -32,6 +32,7 @@ DATA_FILE="$1"
 COMMAND="$2"
 SUBCOMMAND="$3"
 
+# Vérification commande
 if [[ "$COMMAND" != "histo" && "$COMMAND" != "leaks" ]]; then
     error_exit "Commande invalide : '$COMMAND'. Les commandes autorisées sont 'histo' ou 'leaks'."
 fi
@@ -58,7 +59,7 @@ if [ ! -f "$EXEC1" ] || [ ! -f "$EXEC2" ]; then
 fi
 
 
-#Création dossier "graphe"
+#Création dossiers 
 mkdir -p graphe
 mkdir -p data
 
