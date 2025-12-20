@@ -44,6 +44,7 @@ Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour g
 
 
 II. Utilisation
+
 Le point d'entrée unique du programme est le script myScript.sh.
 
 Syntaxe générale :
@@ -81,6 +82,7 @@ Si l'usine est introuvable, le programme enregistre une ligne avec la valeur -1.
 
 
 III. Exemples d'exécution
+
 Voici des exemples concrets pour tester le programme (assurez-vous d'utiliser les noms de fichiers présents dans le dossier, ex: c-wildwater_v0.dat) :
 
 Générer l'histogramme des capacités max :
