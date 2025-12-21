@@ -31,7 +31,9 @@ Avant de lancer le programme, veuillez suivre ces étapes scrupuleusement pour g
 
 
 
-1.Mise en place des données : Téléchargez et placez les fichiers de données suivants directement dans le dossier projet_finale :
+1.Mise en place des données : Téléchargez le dossier projet_finale (complet) ainsi que les fichier c-wildwater_v0.dat et c-wildwater_v3.dat 
+
+Placez les fichiers de données suivants directement dans le dossier projet_finale :
   
   -c-wildwater_v0.dat
   
